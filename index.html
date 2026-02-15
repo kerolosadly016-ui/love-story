@@ -188,3 +188,155 @@ document.getElementById("music").play();
 
 </body>
 </html>
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>الرئيسية ❤️</title>
+
+<style>
+body{
+margin:0;
+background:#0d0d0d;
+color:white;
+font-family:Arial;
+text-align:center;
+overflow:hidden;
+}
+.header{
+padding:15px;
+background:#111;
+font-size:18px;
+box-shadow:0 0 15px #ff0055;
+}
+.counter{
+display:grid;
+grid-template-columns:repeat(3,1fr);
+gap:15px;
+padding:20px;
+}
+.box{
+background:#1a1a1a;
+padding:15px;
+border-radius:20px;
+}
+.box span{
+display:block;
+font-size:20px;
+color:#ff0055;
+}
+.controls{
+margin-top:10px;
+}
+button{
+background:#ff0055;
+border:none;
+color:white;
+padding:10px 20px;
+border-radius:20px;
+margin:5px;
+}
+.menu{
+position:fixed;
+bottom:0;
+width:100%;
+background:#111;
+display:flex;
+justify-content:space-around;
+padding:15px 0;
+}
+.heart{
+position:fixed;
+color:#ff0055;
+animation:float 8s linear infinite;
+}
+@keyframes float{
+0%{transform:translateY(100vh);}
+100%{transform:translateY(-10vh);}
+}
+</style>
+</head>
+<body>
+
+<script>
+if(sessionStorage.getItem("love")!=="true"){
+window.location.href="index.html";
+}
+</script>
+
+<div class="header">Kerolos ❤️ Demyana</div>
+
+<h3>مع بعض من 13 / 10 / 2022</h3>
+
+<div class="counter">
+<div class="box"><span id="years"></span>سنة</div>
+<div class="box"><span id="months"></span>شهر</div>
+<div class="box"><span id="days"></span>يوم</div>
+<div class="box"><span id="hours"></span>ساعة</div>
+<div class="box"><span id="minutes"></span>دقيقة</div>
+<div class="box"><span id="seconds"></span>ثانية</div>
+</div>
+
+<p>كل لحظة معاكي هي أحلى لحظة في حياتي ❤️</p>
+
+<div class="controls">
+<button onclick="toggleMusic()">🔊 تشغيل / إيقاف</button>
+</div>
+
+<div class="menu">
+<button onclick="location.href='home.html'">الرئيسية</button>
+<button onclick="location.href='memories.html'">ذكرياتنا</button>
+</div>
+
+<audio id="music" autoplay loop>
+<source src="song.mp3" type="audio/mpeg">
+</audio>
+
+<script>
+const start=new Date("2022-10-13T00:00:00");
+
+function update(){
+let now=new Date();
+let diff=now-start;
+
+let seconds=Math.floor(diff/1000);
+let minutes=Math.floor(seconds/60);
+let hours=Math.floor(minutes/60);
+let days=Math.floor(hours/24);
+let months=Math.floor(days/30);
+let years=Math.floor(months/12);
+
+document.getElementById("years").innerText=years;
+document.getElementById("months").innerText=months%12;
+document.getElementById("days").innerText=days%30;
+document.getElementById("hours").innerText=hours%24;
+document.getElementById("minutes").innerText=minutes%60;
+document.getElementById("seconds").innerText=seconds%60;
+}
+setInterval(update,1000);
+update();
+
+function toggleMusic(){
+let music=document.getElementById("music");
+if(music.paused){
+music.play();
+}else{
+music.pause();
+}
+}
+
+function heart(){
+let h=document.createElement("div");
+h.className="heart";
+h.innerHTML="❤";
+h.style.left=Math.random()*100+"vw";
+h.style.fontSize=(15+Math.random()*15)+"px";
+document.body.appendChild(h);
+setTimeout(()=>h.remove(),8000);
+}
+setInterval(heart,1000);
+</script>
+
+</body>
+</html>
