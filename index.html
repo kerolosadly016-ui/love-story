@@ -4,37 +4,89 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>قصتنا ❤️</title>
+
 <style>
 body{
-    background:#000;
-    color:#fff;
-    text-align:center;
-    font-family:Arial;
     margin:0;
+    background:linear-gradient(135deg,#0f0f0f,#1c1c1c);
+    color:white;
+    font-family:Arial;
+    text-align:center;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    height:100vh;
 }
-.container{
-    margin-top:150px;
+.card{
+    background:#111;
+    padding:40px;
+    border-radius:25px;
+    width:300px;
+    box-shadow:0 0 30px rgba(255,0,100,0.4);
 }
 input{
-    padding:10px;
+    padding:12px;
+    width:100%;
     border-radius:20px;
     border:none;
-    width:200px;
+    margin-top:15px;
     text-align:center;
 }
 button{
-    padding:10px 20px;
+    margin-top:15px;
+    padding:12px;
+    width:100%;
     border:none;
     border-radius:20px;
-    background:#ff2e63;
-    color:#fff;
-    margin-top:15px;
+    background:#ff0055;
+    color:white;
+    font-size:16px;
+}
+.loader{
+    position:fixed;
+    width:100%;
+    height:100%;
+    background:black;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    font-size:22px;
+    z-index:10;
 }
 </style>
 </head>
 <body>
 
-<div class="container">
+<div class="loader" id="loader">❤️ جاري تحميل قصتنا...</div>
+
+<div class="card">
+<h2>Kerolos ❤️ Demyana</h2>
+<p>ادخلي الكود عشان نبدأ</p>
+<input type="password" id="code" placeholder="الكود">
+<button onclick="check()">دخول</button>
+<p id="error" style="color:red;"></p>
+</div>
+
+<script>
+setTimeout(()=>{
+document.getElementById("loader").style.display="none";
+},2000);
+
+function check(){
+let correct="1310";
+let user=document.getElementById("code").value;
+
+if(user===correct){
+sessionStorage.setItem("love","true");
+window.location.href="home.html";
+}else{
+document.getElementById("error").innerText="الكود غلط ❤️";
+}
+}
+</script>
+
+</body>
+</html><div class="container">
 <h1>❤️ قصة حبنا ❤️</h1>
 <p>ادخل الكود عشان تفتح قصتنا</p>
 <input type="password" id="code" placeholder="اكتب الكود">
