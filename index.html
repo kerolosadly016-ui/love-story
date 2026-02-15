@@ -1,40 +1,64 @@
 <!DOCTYPE html>
-<html lang="ar">
+<html lang="ar" dir="rtl">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Kerolos ❤️ Demyana</title>
-
+<title>قصتنا ❤️</title>
 <style>
 body{
-margin:0;
-padding:0;
-background:black;
-color:white;
-font-family: Arial;
-text-align:center;
-overflow-x:hidden;
+    background:#000;
+    color:#fff;
+    text-align:center;
+    font-family:Arial;
+    margin:0;
 }
-
-h1{
-margin-top:30px;
-color:#ff004c;
-font-size:30px;
+.container{
+    margin-top:150px;
 }
-
-.heart{
-color:red;
-font-size:40px;
-animation:beat 1s infinite;
+input{
+    padding:10px;
+    border-radius:20px;
+    border:none;
+    width:200px;
+    text-align:center;
 }
-
-@keyframes beat{
-0%{transform:scale(1);}
-50%{transform:scale(1.2);}
-100%{transform:scale(1);}
+button{
+    padding:10px 20px;
+    border:none;
+    border-radius:20px;
+    background:#ff2e63;
+    color:#fff;
+    margin-top:15px;
 }
+</style>
+</head>
+<body>
 
-.counter{
+<div class="container">
+<h1>❤️ قصة حبنا ❤️</h1>
+<p>ادخل الكود عشان تفتح قصتنا</p>
+<input type="password" id="code" placeholder="اكتب الكود">
+<br>
+<button onclick="checkCode()">دخول</button>
+<p id="error" style="color:red;"></p>
+</div>
+
+<script>
+function checkCode(){
+    const correctCode = "1310";  // غير الكود من هنا
+    const userCode = document.getElementById("code").value;
+
+    if(userCode === correctCode){
+        localStorage.setItem("music","play");
+        window.location.href = "home.html";
+    }else{
+        document.getElementById("error").innerText="الكود غلط ❤️";
+    }
+}
+</script>
+
+</body>
+</html>.counter{
 margin-top:20px;
 font-size:20px;
 }
